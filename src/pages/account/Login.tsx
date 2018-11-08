@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import * as querystring from 'querystring';
 import { User } from '../../state/User';
 import { Redirect } from 'react-router';
+import { PostAction } from '../../actions/PostActions';
 
 interface ILoginProps {
     login?: (data: any) => void;
@@ -34,26 +35,13 @@ class LoginPage extends React.Component<ILoginProps, ILoginState> {
 
     private handleLogin = () => {
 
+        const myPost = new PostAction(); 
+
         console.log("button submit");
 
-        // Access to fetch from origin has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource
-        // If an opaque serves your need set the requests mode to 'no-cors' to fetch the resource with CORS disabled.
-        // Exception Failed to Fetch.
-        fetch('https://gturnquist-quoters.cfapps.io/api/random')
-        .then((res) => {
-            if (res.status >= 400) {
-                throw new Error("Bad response from server");
-            }
-            return res.json();
-        })
-        .then((stories) => {
-            console.log(stories);
-        });
-
-
-        this.props.login(this.state);
-
-    
+        myPost.postAction();
+        
+        this.props.login(this.state);   
     }
 
     public render(): JSX.Element {

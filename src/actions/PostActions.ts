@@ -3,9 +3,11 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-class PostAction extends React.Component {
+export class PostAction {
 
 public postAction() {
+
+    console.log("hello postAction");
 
 fetch('https://gturnquist-quoters.cfapps.io/api/random')
     .then((res) => {
