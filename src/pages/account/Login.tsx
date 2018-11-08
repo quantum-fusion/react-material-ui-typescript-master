@@ -39,7 +39,7 @@ class LoginPage extends React.Component<ILoginProps, ILoginState> {
 
         console.log("button submit");
 
-        myPost.postAction();
+        myPost.postAction("blah blah");
         
         this.props.login(this.state);   
     }
